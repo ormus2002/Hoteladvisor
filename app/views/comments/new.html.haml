@@ -1,0 +1,9 @@
+%h2 #{@hotel.title} - new comment
+.comment-new
+  = simple_form_for [@hotel, @comment], html: { class: 'form-horizontal' } do |f|
+    = f.label :rating
+    #star
+    #star-hint
+    .comment-text
+      = f.input :text, label: 'Comment'
+    = f.button :submit, 'Save', class: 'btn-primary btn-inverse'

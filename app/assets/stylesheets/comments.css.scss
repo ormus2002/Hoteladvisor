@@ -1,0 +1,40 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.comment-new {
+  width: 50%;
+
+  #star {
+    display:inline-block;
+    margin-left: 15px;
+  }
+
+  #star-hint {
+    display:inline-block;
+    margin-left: 5px;
+  }
+
+  .comment-text {
+    margin-top: 20px;
+  }
+}
+
+.comments-block {
+  margin-top: 10px;
+
+  .comment-body {
+    background-color: beige;
+    width: 600px;
+    border-radius: 10px;
+    margin-top: 5px;
+
+    .comment-rating {
+      margin: 10px 0 5px 10px;
+      display:inline-block;
+    }
+
+    .comment-text {
+      margin: 3px 0 5px 10px;
+    }
+  }
+}

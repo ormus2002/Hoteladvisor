@@ -1,0 +1,47 @@
+.hotel
+  .hotel-title
+    %h1= @hotel.title
+  .hotel-rating-and-comments
+    .hotel-comment comments: #{@hotel.comments.count}
+    .hotel-rating{'data-score' => @hotel.rating}
+  .cleaner
+  - if @hotel.address
+    %address
+      - if !@hotel.address.street.empty?
+        #{@hotel.address.street},
+        %br
+      - if !@hotel.address.city.empty?
+        #{@hotel.address.city},
+      - if !@hotel.address.state.empty?
+        #{@hotel.address.state},
+        %br
+      - if !@hotel.address.country.empty?
+        #{@hotel.address.country}
+  - if @hotel.room_description && !@hotel.room_description.empty?
+    .hotel-details Room description: #{@hotel.room_description}
+  - if @hotel.room_price
+    .hotel-details Room price: #{number_to_currency(@hotel.room_price)}
+  .hotel-details Breakfast included: #{@hotel.is_breakfast ? 'yes' : 'no'}
+
+  .hotel-fotos
+    - @images = @hotel.images.desc
+    - @images.each_with_index do |image, index|
+      - if index < 5
+        =link_to image_tag(image.image_file_url(:thumb).to_s), image.image_file_url, {class: 'lb_image'}
+      - else
+        =link_to image_tag(image.image_file_url(:thumb).to_s), image.image_file_url, {class: 'lb_image', style: 'display: none'}
+    - if @images.length > 5
+      .image-link
+        =link_to 'View all images', '#image_first', {class: 'lb_image'}
+
+= link_to 'New comment', new_hotel_comment_path(@hotel), class: 'btn btn-primary btn-inverse'
+
+#image_upload
+  = form_for Image.new do |f|
+    %span.btn.btn-inverse.fileinput-button
+      %span Upload foto
+      = f.file_field :image_file, name: "image[image_file]", multiple: true
+      = f.hidden_field :hotel_id, value: @hotel.id
+%span.foto-notice
+
+= render '/comments/form'

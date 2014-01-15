@@ -1,0 +1,6 @@
+.comments-block
+  - @hotel.comments.desc.each do |comment|
+    .comment-body
+      .comment-rating{'data-score' => comment.rating}
+      %span=comment.created_at.strftime("%d %b %y")
+      .comment-text=comment.text

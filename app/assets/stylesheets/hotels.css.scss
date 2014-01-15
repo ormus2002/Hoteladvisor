@@ -1,0 +1,67 @@
+// Place all the styles related to the hotels controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.center-content-block {
+  width: 978px;
+  margin: 0 auto;
+
+  .left-block {
+    display: inline-block;
+    float: left;
+    width: 49%;
+  }
+
+  .right-block {
+    display: inline-block;
+    float: left;
+    width: 494px;
+  }
+}
+
+.hotel {
+  margin-left: 20px;
+  margin-bottom: 10px;
+  position: relative;
+  width: 600px;  
+
+  .hotel-title {
+    float: left;
+    width: 388px;
+  }
+
+  .hotel-rating-and-comments {
+    float: left;
+    width: 186px;
+    position: relative;
+
+    .hotel-comment {
+      display:inline-block;
+      width: 100px;
+    }
+    
+    .hotel-rating {
+      display:inline-block;
+			width: 80px;
+    }
+  }
+
+  .hotel-details {
+    margin-top: 5px;
+  }
+
+  .hotel-fotos {
+    height: 90px;
+    margin-top: 10px;
+
+    .image-link {
+      float: left;
+      width: 60px;
+      text-align: center;
+    }
+  }
+}
+
+#image_upload {
+  display: inline-table;
+  margin-top: 10px;
+}

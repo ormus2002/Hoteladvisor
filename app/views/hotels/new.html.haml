@@ -1,0 +1,15 @@
+.center-content-block
+  %h2 New hotel
+  = simple_form_for @hotel, url: hotels_path, html: { class: 'form-horizontal' } do |f|
+    .left-block
+      = f.input :title
+      = f.input :room_price, label: 'Price for room'
+      = f.input :room_description, label: 'Room description'
+      = f.input :is_breakfast, as: :boolean, label: 'Breakfast included'
+      = f.button :submit, 'Save', class: 'btn-primary btn-inverse'
+    .right-block
+      = f.simple_fields_for :address do |a|
+        = a.input :country
+        = a.input :state
+        = a.input :city
+        = a.input :street

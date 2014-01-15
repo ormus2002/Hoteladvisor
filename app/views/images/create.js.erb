@@ -1,0 +1,6 @@
+<% if @image.new_record? %>
+    alert("Error uploading file: <%= j @image.errors.full_message.join(', ').html %>");
+<% else %>
+    $(".hotel-fotos").prepend("<%= j render(@image) %>");
+    $(".foto-notice").html("uploaded");
+<% end %>

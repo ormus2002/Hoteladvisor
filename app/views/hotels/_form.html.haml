@@ -1,0 +1,25 @@
+.center-block
+  - @hotels.each do |hotel|
+    .hotel
+      %hr
+      .hotel-title
+        = link_to hotel.title, hotel
+      .hotel-rating-and-comments
+        .hotel-comment comments: #{hotel.comments.count}
+        .hotel-rating{'data-score' => hotel.rating}
+      .cleaner
+      - if hotel.address
+        %address
+          - if !hotel.address.street.empty?
+            #{hotel.address.street},
+          - if !hotel.address.city.empty?
+            #{hotel.address.city},
+          - if !hotel.address.state.empty?
+            #{hotel.address.state},
+          - if !hotel.address.country.empty?
+            #{hotel.address.country}
+      - if hotel.room_description && !hotel.room_description.empty?
+        .hotel-details Room description: #{hotel.room_description}
+      - if hotel.room_price
+        .hotel-details Room price: #{number_to_currency(hotel.room_price)}
+      .hotel-details Breakfast included: #{hotel.is_breakfast ? 'yes' : 'no'}

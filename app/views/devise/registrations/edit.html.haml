@@ -1,0 +1,15 @@
+%h2 Edit profile
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f|
+  = f.input :name, autofocus: true
+  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+    = f.input :email, hint: "Currently waiting confirmation for: #{resource.unconfirmed_email}"
+  - else
+    = f.input :email
+  = f.input :password, hint: "(leave blank if you don't want to change it)"
+  = f.input :password_confirmation
+  = f.input :current_password, hint: '(we need your current password to confirm your changes)'
+  = f.button :submit, 'Save', class: 'btn-primary btn-inverse'
+%br
+%h4 Cancel my account
+%p Unhappy?
+= button_to 'Cancel my account', registration_path(resource_name), class: 'btn', :data => { :confirm => 'Are you sure?' }, :method => :delete
